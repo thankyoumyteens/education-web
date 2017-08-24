@@ -23,12 +23,12 @@
         </router-link>
       </div>
       <div class="account" v-if="user == null">
-        <a class="account-item login" @click="logIn">
-          <span>登陆</span>
-        </a>
-        <a class="account-item register" @click="singUp">
-          <span>注册</span>
-        </a>
+        <router-link class="account-item login btn btn-primary" to="/PleaseLogIn">
+          登陆
+        </router-link>
+        <!--<router-link class="account-item register" to="/PleaseLogIn">-->
+          <!--<span>注册</span>-->
+        <!--</router-link>-->
       </div>
       <div class="user" v-if="user != null">
         <router-link class="user-item" to="/User">
@@ -40,11 +40,12 @@
       </div>
     </div>
     <div class="main-content">
-      <router-view></router-view>
+      <router-view
+        @logInSucceed="logInSucceed"
+        @signUpSucceed="signUpSucceed"
+      ></router-view>
     </div>
-    <div class="foot">
-      优仕通经济师网
-    </div>
+    <div class="foot"></div>
   </div>
 </template>
 
@@ -75,22 +76,23 @@ export default {
   },
   methods: {
     /**
-     * 登陆
+     * 登陆成功
      */
-    logIn () {
+    logInSucceed () {
+      let str = localStorage.getItem('user')
+      let id = str.substring(0, str.indexOf('|'))
+      let name = str.substring(str.indexOf('|') + 1)
       let o = {
-        id: '123456',
-        name: 'test'
+        id: id,
+        name: name
       }
-      localStorage.clear()
-      localStorage.setItem('user', o['id'] + '|' + o['name'])
       this.user = o
       router.push('/Home')
     },
     /**
      * 注册
      */
-    singUp () {
+    signUpSucceed () {
       alert('reg')
     },
     /**
@@ -134,10 +136,6 @@ export default {
         line-height 3em
         .account-item
           cursor pointer
-          color #0f88eb
-          &:hover
-            color #0d79d1
-            text-decoration underline
       .user
         position fixed
         right 0
