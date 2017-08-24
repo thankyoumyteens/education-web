@@ -1,6 +1,6 @@
 <template>
-  <div class="exams">
-    试题
+  <div class="live">
+    敬请期待
   </div>
 </template>
 

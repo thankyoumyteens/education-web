@@ -1,6 +1,6 @@
 <template>
   <div class="course">
-    ctest
+    课程
   </div>
 </template>
 

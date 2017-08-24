@@ -1,6 +1,6 @@
 <template>
-  <div class="exams">
-    试题
+  <div class="please-login">
+    请登录后访问
   </div>
 </template>
 

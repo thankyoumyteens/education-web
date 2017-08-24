@@ -1,6 +1,6 @@
 <template>
-  <div class="exams">
-    试题
+  <div class="user">
+    用户
   </div>
 </template>
 

@@ -6,6 +6,21 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+router.beforeEach(function (to, from, next) {
+  // 未登录状态只能访问PleaseLogIn 和 Home
+  if (to.path === '/PleaseLogIn' || to.path === '/Home') {
+    next()
+  } else {
+    if (!localStorage.getItem('user')) {
+      next({
+        path: '/PleaseLogIn'
+      })
+    } else {
+      next()
+    }
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
