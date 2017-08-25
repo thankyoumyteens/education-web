@@ -18,6 +18,50 @@
       <a class="wrapper-arrow wrapper-prev" :style="{marginTop:-originalData.btn_width/2+'px'}" @click="prev">&lt;</a>
       <a class="wrapper-arrow wrapper-next" :style="{marginTop:-originalData.btn_width/2+'px'}" @click="next">&gt;</a>
     </div>
+    <div class="introduce">
+      <h1>什么是经济师?</h1>
+      <div class="desc">
+        <p>经济师，是我国职称之一。要取得“经济师”职称，需要参加“经济专业技术资格考试”。
+          由人事部统一发放合格证书。</p>
+        <p>经济专业技术资格实行全国统一考试制度，由全国统一组织、
+          统一大纲、统一试题、统一评分标准。资格考试设置两个级</p>
+        <p>别：经济专业初级资格、经济专业中级资格。参加考试并成绩合格者，
+          获得相应级别的专业技术资格，由人事部统一发放合格证书。</p>
+      </div>
+    </div>
+    <div class="introduce bgc">
+      <h1>如何报考经济师?</h1>
+      <div class="card-wrapper">
+        <div class="card">
+          <div class="icon"><img src="./images/1.png" alt=""></div>
+          <div class="title">学历</div>
+          <div class="content">
+            经济师考生须取得高中毕业以上学历
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon"><img src="./images/1.png" alt=""></div>
+          <div class="title">专业</div>
+          <div class="content">
+            相关专业包括工商管理、农业、商业、财政税收、金融等专业
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon"><img src="./images/1.png" alt=""></div>
+          <div class="title">工作</div>
+          <div class="content">
+            经济师报考，需要提供本人开具所在单位的相关工作证明
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon"><img src="./images/1.png" alt=""></div>
+          <div class="title">年限</div>
+          <div class="content">
+            从事相关工作年限是指取得规定学历前、后从事该项工作时间的总和
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -131,55 +175,99 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .home
     .wrapper
-      position: relative
-      overflow: hidden
+      position relative
+      overflow hidden
       &:hover
         .wrapper-arrow
-          display: block
-          background-color: rgba(0,0,0,.7)
+          display block
+          background-color rgba(0,0,0,.7)
       .wrapper-content
-        position: absolute
-        left: 0
-        z-index: 1
+        position absolute
+        left 0
+        z-index 1
         .wrapper-content_img
-          border: none
-          outline: none
-          float: left
+          border none
+          outline none
+          float left
       .wrapper-buttons
-        position: absolute
-        width: 100px
-        height: 20px
-        text-align: center
-        bottom: 3px
-        z-index: 2
+        position absolute
+        width 100px
+        height 20px
+        text-align center
+        bottom 3px
+        z-index 2
         .wrapper-button
-          float: left
-          width: 10px
-          height: 10px
-          border-radius: 50%
-          background: #fff
+          float left
+          width 10px
+          height 10px
+          border-radius 50%
+          background #fff
           border 1px solid #337ab7
-          margin: 0 5px
-          cursor: pointer
+          margin 0 5px
+          cursor pointer
         .wrapper_on
-          background-color: #337ab7
-    .wrapper-arrow
-      position: absolute
-      width: 40px
-      height:40px
-      cursor: pointer
-      background-color: rgba(0,0,0,.3)
-      color: #fff
-      display: none
-      top:50%
-      line-height: 40px
-      font-size: 36px
-      text-align: center
-      z-index: 2
-    .wrapper-prev
-      left: 10px
-    .wrapper-next
-      right: 10px
-    .wrapper_trans
-      transition: left .3s ease
+          background-color #337ab7
+      .wrapper-arrow
+        position absolute
+        width 40px
+        height 40px
+        cursor pointer
+        background-color rgba(0,0,0,.3)
+        color #fff
+        display none
+        top 50%
+        line-height 40px
+        font-size 36px
+        text-align center
+        z-index 2
+      .wrapper-prev
+        left 10px
+      .wrapper-next
+        right 10px
+      .wrapper_trans
+        transition left .3s ease
+    .introduce
+      h1
+        color #337ab7
+        font-size 50px
+        font-weight bold
+      .desc
+        font-size 20px
+        font-weight bold
+        margin-left 20px
+    .bgc
+      .card-wrapper
+        text-align center
+        .card
+          width 210px
+          height 270px
+          margin-right 1%
+          margin-bottom 10px
+          display inline-block
+          border 1px solid #ccc
+          vertical-align top
+          box-shadow 6px 6px 2px #dfdbda
+          transition all .3s
+          &:hover
+            background #337ab7
+            .title
+              color #fff
+            .content
+              color #fff
+          .icon
+            width 88px
+            height 88px
+            margin 20px auto
+            img
+              width 100%
+              height 100%
+          .title
+            color #000
+            font-size 17px
+            font-weight bold
+          .content
+            font-size 15px
+            color #777
+            width 60%
+            margin 10px auto
 </style>
