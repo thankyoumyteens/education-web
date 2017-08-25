@@ -9,9 +9,19 @@ Vue.use(VueResource)
 
 Vue.config.productionTip = false
 
+// 以form data 方式进行post请求
+Vue.http.options.emulateJSON = true
+Vue.http.options.headers = {
+  'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+}
+
 router.beforeEach(function (to, from, next) {
   // 未登录状态只能访问PleaseLogIn 和 Home
-  if (to.path === '/PleaseLogIn' || to.path === '/Home') {
+  if (to.path === '/') {
+    next({
+      path: '/Home'
+    })
+  } else if (to.path === '/PleaseLogIn' || to.path === '/Home') {
     next()
   } else {
     if (!localStorage.getItem('user')) {

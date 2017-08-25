@@ -47,7 +47,7 @@
             loginButton.innerHTML = '登陆'
             this.$emit('logInSucceed', null)
           } else {
-            alert('用户名或密码错误')
+            alert(res.body)
             userId.value = ''
             password.value = ''
             loginButton.innerHTML = '登陆'

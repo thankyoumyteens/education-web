@@ -111,6 +111,7 @@ export default {
   #app
     text-align center
     .nav-bar
+      z-index 10
       width 100%
       overflow hidden
       position fixed
