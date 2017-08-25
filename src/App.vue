@@ -153,11 +153,15 @@ export default {
         display inline-block
         vertical-align top
         .nav-bar-item
+          display inline-block
           text-decoration none
           text-align center
           margin-left 1em
           margin-right 1em
           color #777
+          &.router-link-active
+            color #478aff
+            font-weight bold
     .main-content
       margin-top 3em
       display inline-block

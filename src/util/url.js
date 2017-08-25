@@ -4,6 +4,7 @@
 export function getUrl () {
   let host = 'http://localhost:9999/'
   return {
-    'login': host + 'login'
+    'login': host + 'login',
+    'exams': host + 'exams'
   }
 }
