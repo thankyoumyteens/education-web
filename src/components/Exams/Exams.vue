@@ -57,6 +57,8 @@
         border 1px solid #ccc
         box-shadow 3px 3px 2px #dfdbda
         transition all .3s
+        &:hover
+          box-shadow 3px 3px 2px #ccc
         .title
           font-weight bold
           margin-left 50px

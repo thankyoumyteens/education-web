@@ -40,10 +40,13 @@
       </div>
     </div>
     <div class="main-content">
-      <router-view
-        @logInSucceed="logInSucceed"
-        @signUpSucceed="signUpSucceed"
-      ></router-view>
+      <keep-alive>
+        <router-view
+          @logInSucceed="logInSucceed"
+          @signUpSucceed="signUpSucceed"
+
+        ></router-view>
+      </keep-alive>
     </div>
     <div class="foot"></div>
   </div>
@@ -117,14 +120,14 @@ export default {
       position fixed
       top 0
       left 0
-      height 3em
-      background-color #fff
+      height 45px
+      background-color #f3f5f7
       text-align center
       .logo
         display inline-block
         margin-left 1em
         margin-right 1em
-        height 3em
+        height 45px
         vertical-align top
         img
           height 100%
@@ -133,8 +136,8 @@ export default {
         right 0
         top 0
         margin-right 1em
-        height 3em
-        line-height 3em
+        height 45px
+        line-height 45px
         .account-item
           cursor pointer
       .user
@@ -142,14 +145,14 @@ export default {
         right 0
         top 0
         margin-right 1em
-        height 3em
-        line-height 3em
+        height 45px
+        line-height 45px
         .user-item
           cursor pointer
           color #0f88eb
       .nav-item
-        height 3em
-        line-height 3em
+        height 45px
+        line-height 45px
         display inline-block
         vertical-align top
         .nav-bar-item
@@ -163,7 +166,7 @@ export default {
             color #478aff
             font-weight bold
     .main-content
-      margin-top 3em
+      margin-top 45px
       display inline-block
       text-align left
     .foot
