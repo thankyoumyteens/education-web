@@ -44,7 +44,6 @@
         <router-view
           @logInSucceed="logInSucceed"
           @signUpSucceed="signUpSucceed"
-
         ></router-view>
       </keep-alive>
     </div>
