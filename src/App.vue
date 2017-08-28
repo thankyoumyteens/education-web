@@ -32,7 +32,7 @@
       </div>
       <div class="user" v-if="user != null">
         <router-link class="user-item" to="/User">
-          <span>{{user['name']}}</span>
+          <span>{{user['nickname']}}</span>
         </router-link>
         <a class="user-item" @click="logOut">
           <span>登出</span>
@@ -42,6 +42,7 @@
     <div class="main-content">
       <keep-alive>
         <router-view
+          :profile="user"
           @logInSucceed="logInSucceed"
           @signUpSucceed="signUpSucceed"
         ></router-view>
@@ -58,15 +59,19 @@ export default {
   name: 'app',
   mounted () {
     // 验证登录状态
-    if (localStorage.getItem('user')) {
-      let str = localStorage.getItem('user')
-      let id = str.substring(0, str.indexOf('|'))
-      let name = str.substring(str.indexOf('|') + 1)
-      console.log(id)
-      console.log(name)
+    if (sessionStorage.getItem('uid')) {
       let o = {
-        id: id,
-        name: name
+        uid: sessionStorage.getItem('uid'),
+        nickname: sessionStorage.getItem('nickname'),
+        address: sessionStorage.getItem('address'),
+        gender: sessionStorage.getItem('gender'),
+        idCard: sessionStorage.getItem('idCard'),
+        mail: sessionStorage.getItem('mail'),
+        name: sessionStorage.getItem('name'),
+        qqAccount: sessionStorage.getItem('qqAccount'),
+        schoolCard: sessionStorage.getItem('schoolCard'),
+        wechatAccount: sessionStorage.getItem('wechatAccount'),
+        weiboAccount: sessionStorage.getItem('weiboAccount')
       }
       this.user = o
     }
@@ -81,12 +86,18 @@ export default {
      * 登陆成功
      */
     logInSucceed () {
-      let str = localStorage.getItem('user')
-      let id = str.substring(0, str.indexOf('|'))
-      let name = str.substring(str.indexOf('|') + 1)
       let o = {
-        id: id,
-        name: name
+        uid: sessionStorage.getItem('uid'),
+        nickname: sessionStorage.getItem('nickname'),
+        address: sessionStorage.getItem('address'),
+        gender: sessionStorage.getItem('gender'),
+        idCard: sessionStorage.getItem('idCard'),
+        mail: sessionStorage.getItem('mail'),
+        name: sessionStorage.getItem('name'),
+        qqAccount: sessionStorage.getItem('qqAccount'),
+        schoolCard: sessionStorage.getItem('schoolCard'),
+        wechatAccount: sessionStorage.getItem('wechatAccount'),
+        weiboAccount: sessionStorage.getItem('weiboAccount')
       }
       this.user = o
       router.push('/Home')
@@ -101,7 +112,7 @@ export default {
      * 登出
      */
     logOut () {
-      localStorage.clear()
+      sessionStorage.clear()
       this.user = null
       router.push('/Home')
     }

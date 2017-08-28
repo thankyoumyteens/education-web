@@ -24,7 +24,7 @@ router.beforeEach(function (to, from, next) {
   } else if (to.path === '/PleaseLogIn' || to.path === '/Home') {
     next()
   } else {
-    if (!localStorage.getItem('user')) {
+    if (!sessionStorage.getItem('uid')) {
       next({
         path: '/PleaseLogIn'
       })

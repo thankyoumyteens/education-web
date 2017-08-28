@@ -1,5 +1,5 @@
 <template>
-  <div class="please-login">
+  <div class="please-login" @keyup="enterClick($event)">
     <div class="login-bg">
       <img src="./loginBg.jpg"/>
     </div>
@@ -10,14 +10,14 @@
         </div>
         <div class="login-item form-group">
           <!--<label for="userId">用户名</label>-->
-          <input type="text" id="userId" placeholder="用户名" class="form-control">
+          <input type="text" id="userId" placeholder="用户名" tabindex="1" class="form-control">
         </div>
         <div class="login-item form-group">
           <!--<label for="password">密码</label>-->
-          <input type="text" id="password" placeholder="密码" class="form-control">
+          <input type="text" id="password" placeholder="密码" tabindex="2" class="form-control">
         </div>
         <div class="login-item">
-          <button @click="logIn" id="loginButton" class="btn btn-primary">登陆</button>
+          <button @click="logIn" id="loginButton" class="btn btn-primary" tabindex="3">登陆</button>
         </div>
       </div>
     </div>
@@ -30,6 +30,9 @@
   } from '@/util/url.js'
 
   export default {
+    mounted () {
+      document.getElementById('userId').focus()
+    },
     methods: {
       logIn () {
         let loginButton = document.getElementById('loginButton')
@@ -41,18 +44,36 @@
           'userId': userId.value,
           'password': password.value
         }).then((res) => {
-          if (res.body === 'OK') {
-            localStorage.clear()
-            localStorage.setItem('user', userId.value + '|' + password.value)
+          let data = res.body
+          if (data['status'] === 'OK') {
+            let profile = data['data']
+            sessionStorage.clear()
+            sessionStorage.setItem('uid', profile['uid'])
+            sessionStorage.setItem('nickname', profile['nickname'])
+            sessionStorage.setItem('address', profile['address'])
+            sessionStorage.setItem('gender', profile['gender'])
+            sessionStorage.setItem('idCard', profile['idCard'])
+            sessionStorage.setItem('mail', profile['mail'])
+            sessionStorage.setItem('name', profile['name'])
+            sessionStorage.setItem('qqAccount', profile['qqAccount'])
+            sessionStorage.setItem('schoolCard', profile['schoolCard'])
+            sessionStorage.setItem('wechatAccount', profile['wechatAccount'])
+            sessionStorage.setItem('weiboAccount', profile['weiboAccount'])
             loginButton.innerHTML = '登陆'
             this.$emit('logInSucceed', null)
           } else {
-            alert(res.body)
+            alert(data['message'])
             userId.value = ''
             password.value = ''
             loginButton.innerHTML = '登陆'
           }
         })
+      },
+      enterClick (event) {
+        console.log(event.keyCode)
+        if (event.keyCode === 13) {
+          this.logIn()
+        }
       }
     }
   }
