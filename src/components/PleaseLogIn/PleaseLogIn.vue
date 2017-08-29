@@ -16,8 +16,14 @@
           <!--<label for="password">密码</label>-->
           <input type="password" id="password" placeholder="密码" tabindex="2" class="form-control">
         </div>
+        <div class="login-item form-group" v-show="1">
+          <!--<label for="password">密码</label>-->
+          <input type="text" id="imageCode" placeholder="验证码" tabindex="3" class="form-control">
+          <img class="imageCode" :src="imageCodeUrl" alt="">
+          <a class="changeImageCode" @click="changeImageCode" href="javascript:void(0)">看不清?换一张</a>
+        </div>
         <div class="login-item">
-          <button @click="logIn" id="loginButton" class="btn btn-primary" tabindex="3">登陆</button>
+          <button @click="logIn" id="loginButton" class="btn btn-primary" tabindex="4">登陆</button>
         </div>
       </div>
     </div>
@@ -30,17 +36,25 @@
   } from '@/util/url.js'
 
   export default {
+    data () {
+      return {
+        imageCodeUrl: null
+      }
+    },
     mounted () {
       document.getElementById('userId').focus()
+      this.imageCodeUrl = getUrl()['imageCode'] + '?val=' + (new Date().getTime())
     },
     methods: {
       logIn () {
         let loginButton = document.getElementById('loginButton')
+        let imageCode = document.getElementById('imageCode')
         let userId = document.getElementById('userId')
         let password = document.getElementById('password')
 
         loginButton.innerHTML = '请稍等...'
         this.$http.post(getUrl()['login'], {
+          'imageCode': imageCode.value,
           'userId': userId.value,
           'password': password.value
         }).then((res) => {
@@ -71,6 +85,8 @@
             alert(data['message'])
             userId.value = ''
             password.value = ''
+            imageCode.value = ''
+            this.imageCodeUrl = getUrl()['imageCode'] + '?val=' + (new Date().getTime())
             loginButton.innerHTML = '登陆'
           }
         })
@@ -79,6 +95,9 @@
         if (event.keyCode === 13) {
           this.logIn()
         }
+      },
+      changeImageCode () {
+        this.imageCodeUrl = getUrl()['imageCode'] + '?val=' + (new Date().getTime())
       }
     }
   }
@@ -110,6 +129,12 @@
         border 1px solid #ccc
         .login-item
           margin 0.5em
+          .imageCode
+            height 30px
+          .changeImageCode
+            height 30px
+            line-height 30px
+            cursor pointer
           input
             width 100%
           button
