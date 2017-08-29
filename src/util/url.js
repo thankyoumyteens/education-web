@@ -7,6 +7,7 @@ export function getUrl () {
   return {
     'login': host + 'login',
     'exams': host + 'exams',
-    'course': host + 'course'
+    'course': host + 'course',
+    'updateProfile': host + 'updateProfile'
   }
 }
