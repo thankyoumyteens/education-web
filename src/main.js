@@ -22,7 +22,8 @@ router.beforeEach(function (to, from, next) {
       path: '/Home'
     })
   } else if (
-    to.path === '/Exams'
+    to.path === '/Exams' ||
+    to.path === '/FreeCourse'
   ) {
     // 普通会员以上可用
     if (!sessionStorage.getItem('accessLevel')) {

@@ -1,23 +1,21 @@
 <template>
-  <div class="please-login" @keyup="enterClick($event)">
+  <div class="register" @keyup="enterClick($event)">
     <div class="login-bg">
       <img src="./loginBg.jpg"/>
     </div>
     <div class="dialog-wrapper">
       <div class="login-dialog">
         <div class="login-item form-group">
-          <h3>会员登陆</h3>
+          <h3>会员注册</h3>
         </div>
         <div class="login-item form-group">
-          <!--<label for="userId">用户名</label>-->
           <input type="text" id="userId" placeholder="手机号" tabindex="1" class="form-control">
         </div>
         <div class="login-item form-group">
-          <!--<label for="password">密码</label>-->
           <input type="password" id="password" placeholder="密码" tabindex="2" class="form-control">
         </div>
         <div class="login-item">
-          <button @click="logIn" id="loginButton" class="btn btn-primary" tabindex="3">登陆</button>
+          <button @click="register" id="regButton" class="btn btn-primary" tabindex="3">注册</button>
         </div>
       </div>
     </div>
@@ -30,48 +28,32 @@
   } from '@/util/url.js'
 
   export default {
-    mounted () {
-      document.getElementById('userId').focus()
-    },
     methods: {
-      logIn () {
-        let loginButton = document.getElementById('loginButton')
+      mounted () {
+        document.getElementById('userId').focus()
+      },
+      register () {
+        let regButton = document.getElementById('regButton')
         let userId = document.getElementById('userId')
         let password = document.getElementById('password')
 
-        loginButton.innerHTML = '请稍等...'
-        this.$http.post(getUrl()['login'], {
+        regButton.innerHTML = '请稍等...'
+        this.$http.post(getUrl()['register'], {
           'userId': userId.value,
           'password': password.value
         }).then((res) => {
-          let data = res.body
-          if (data['status'] === 'OK') {
-            let profile = data['profile']
-            let user = data['user']
+          if (res.body === 'OK') {
             sessionStorage.clear()
-            sessionStorage.setItem('uid', user['uid'])
-            sessionStorage.setItem('accessLevel', user['accessLevel'])
-            if (profile !== undefined) {
-              sessionStorage.setItem('nickname', profile['nickname'])
-              sessionStorage.setItem('address', profile['address'])
-              sessionStorage.setItem('gender', profile['gender'])
-              sessionStorage.setItem('idCard', profile['idCard'])
-              sessionStorage.setItem('mail', profile['mail'])
-              sessionStorage.setItem('name', profile['name'])
-              sessionStorage.setItem('qqAccount', profile['qqAccount'])
-              sessionStorage.setItem('schoolCard', profile['schoolCard'])
-              sessionStorage.setItem('wechatAccount', profile['wechatAccount'])
-              sessionStorage.setItem('weiboAccount', profile['weiboAccount'])
-            } else {
-              sessionStorage.setItem('nickname', user['uid'])
-            }
-            loginButton.innerHTML = '登陆'
+            sessionStorage.setItem('uid', userId.value)
+            sessionStorage.setItem('accessLevel', 0)
+            sessionStorage.setItem('nickname', userId.value)
+            regButton.innerHTML = '注册'
             this.$emit('logInSucceed', null)
           } else {
-            alert(data['message'])
+            alert(res.body)
             userId.value = ''
             password.value = ''
-            loginButton.innerHTML = '登陆'
+            regButton.innerHTML = '注册'
           }
         })
       },
@@ -85,7 +67,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .please-login
+  .register
     width 100%
     overflow-x hidden
     text-align center

@@ -6,6 +6,8 @@ export function getUrl () {
   // let host = '/course/' // 发布用
   return {
     'login': host + 'login',
+    'register': host + 'register',
+    'simulation': host + 'simulation',
     'exams': host + 'exams',
     'course': host + 'course',
     'updateProfile': host + 'updateProfile'

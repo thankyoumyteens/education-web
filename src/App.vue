@@ -6,7 +6,7 @@
       </div>
       <div class="nav-item">
         <router-link class="nav-bar-item" to="/Home">首页</router-link>
-        <router-link class="nav-bar-item" to="/FreeCourse">体验课</router-link>
+        <router-link class="nav-bar-item" v-show="freeShow" to="/FreeCourse">体验课</router-link>
         <router-link class="nav-bar-item" to="/Course">课程</router-link>
         <router-link class="nav-bar-item" to="/Simulation">模拟题</router-link>
         <router-link class="nav-bar-item" to="/Exams">历年题</router-link>
@@ -15,7 +15,7 @@
       </div>
       <div class="account" v-if="user == null">
         <router-link class="account-item btn btn-primary" to="/PleaseLogIn">登陆</router-link>
-        <router-link class="account-item btn btn-primary" to="/PleaseLogIn">注册</router-link>
+        <router-link class="account-item btn btn-primary" to="/Register">注册</router-link>
       </div>
       <div class="user" v-if="user != null">
         <router-link class="user-item" to="/User">
@@ -62,6 +62,18 @@ export default {
         o['nickname'] = o['uid']
       }
       this.user = o
+    }
+  },
+  computed: {
+    'freeShow' () {
+      if (!sessionStorage.getItem('accessLevel')) {
+        return true
+      } else if (parseInt(sessionStorage.getItem('accessLevel')) < 1) {
+        return true
+      } else {
+        console.log(sessionStorage.getItem('accessLevel'))
+        return false
+      }
     }
   },
   data () {

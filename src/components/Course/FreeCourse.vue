@@ -34,7 +34,7 @@
       page
     },
     mounted () {
-      this.getCourses(-1)
+      this.getCourses(100)
     },
     data () {
       return {

@@ -22,7 +22,7 @@
 
   export default {
     mounted () {
-      this.$http.get(getUrl()['exams']).then((res) => {
+      this.$http.get(getUrl()['simulation']).then((res) => {
         let data = res.body
         if (data.length <= 0) {
           this.$refs.loading.innerHTML = '暂无数据'

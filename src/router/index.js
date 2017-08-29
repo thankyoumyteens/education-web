@@ -9,6 +9,7 @@ import Live from '@/components/Live/Live'
 import User from '@/components/User/User'
 import NoPermission from '@/components/PleaseLogIn/NoPermission'
 import PleaseLogIn from '@/components/PleaseLogIn/PleaseLogIn'
+import Register from '@/components/PleaseLogIn/Register'
 import About from '@/components/About/About'
 
 Vue.use(Router)
@@ -59,6 +60,11 @@ export default new Router({
       path: '/PleaseLogIn',
       name: 'PleaseLogIn',
       component: PleaseLogIn
+    },
+    {
+      path: '/Register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/About',
