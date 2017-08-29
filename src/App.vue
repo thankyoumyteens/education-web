@@ -5,38 +5,23 @@
         <img src="./logo.png" alt="logo">
       </div>
       <div class="nav-item">
-        <router-link class="nav-bar-item home-link" to="/Home">
-          <img src="" alt="">
-          <span>首页</span>
-        </router-link>
-        <router-link class="nav-bar-item course-link" to="/Course">
-          <img src="" alt="">
-          <span>课程</span>
-        </router-link>
-        <router-link class="nav-bar-item exams-link" to="/Exams">
-          <img src="" alt="">
-          <span>历年题</span>
-        </router-link>
-        <router-link class="nav-bar-item live-link" to="/Live">
-          <img src="" alt="">
-          <span>直播间</span>
-        </router-link>
+        <router-link class="nav-bar-item" to="/Home">首页</router-link>
+        <router-link class="nav-bar-item" to="/FreeCourse">体验课</router-link>
+        <router-link class="nav-bar-item" to="/Course">课程</router-link>
+        <router-link class="nav-bar-item" to="/Simulation">模拟题</router-link>
+        <router-link class="nav-bar-item" to="/Exams">历年题</router-link>
+        <router-link class="nav-bar-item" to="/Live">直播间</router-link>
+        <router-link class="nav-bar-item" to="/About">关于我们</router-link>
       </div>
       <div class="account" v-if="user == null">
-        <router-link class="account-item login btn btn-primary" to="/PleaseLogIn">
-          登陆
-        </router-link>
-        <!--<router-link class="account-item register" to="/PleaseLogIn">-->
-          <!--<span>注册</span>-->
-        <!--</router-link>-->
+        <router-link class="account-item btn btn-primary" to="/PleaseLogIn">登陆</router-link>
+        <router-link class="account-item btn btn-primary" to="/PleaseLogIn">注册</router-link>
       </div>
       <div class="user" v-if="user != null">
         <router-link class="user-item" to="/User">
           <span>{{user['nickname']}}</span>
         </router-link>
-        <a class="user-item" @click="logOut">
-          <span>登出</span>
-        </a>
+        <a class="user-item" @click="logOut">登出</a>
       </div>
     </div>
     <div class="main-content">
@@ -72,6 +57,9 @@ export default {
         schoolCard: sessionStorage.getItem('schoolCard'),
         wechatAccount: sessionStorage.getItem('wechatAccount'),
         weiboAccount: sessionStorage.getItem('weiboAccount')
+      }
+      if (!o['nickname']) {
+        o['nickname'] = o['uid']
       }
       this.user = o
     }

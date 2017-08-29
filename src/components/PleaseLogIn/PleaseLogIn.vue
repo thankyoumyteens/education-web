@@ -14,7 +14,7 @@
         </div>
         <div class="login-item form-group">
           <!--<label for="password">密码</label>-->
-          <input type="text" id="password" placeholder="密码" tabindex="2" class="form-control">
+          <input type="password" id="password" placeholder="密码" tabindex="2" class="form-control">
         </div>
         <div class="login-item">
           <button @click="logIn" id="loginButton" class="btn btn-primary" tabindex="3">登陆</button>
@@ -46,19 +46,25 @@
         }).then((res) => {
           let data = res.body
           if (data['status'] === 'OK') {
-            let profile = data['data']
+            let profile = data['profile']
+            let user = data['user']
             sessionStorage.clear()
-            sessionStorage.setItem('uid', profile['uid'])
-            sessionStorage.setItem('nickname', profile['nickname'])
-            sessionStorage.setItem('address', profile['address'])
-            sessionStorage.setItem('gender', profile['gender'])
-            sessionStorage.setItem('idCard', profile['idCard'])
-            sessionStorage.setItem('mail', profile['mail'])
-            sessionStorage.setItem('name', profile['name'])
-            sessionStorage.setItem('qqAccount', profile['qqAccount'])
-            sessionStorage.setItem('schoolCard', profile['schoolCard'])
-            sessionStorage.setItem('wechatAccount', profile['wechatAccount'])
-            sessionStorage.setItem('weiboAccount', profile['weiboAccount'])
+            sessionStorage.setItem('uid', user['uid'])
+            sessionStorage.setItem('accessLevel', user['accessLevel'])
+            if (profile !== undefined) {
+              sessionStorage.setItem('nickname', profile['nickname'])
+              sessionStorage.setItem('address', profile['address'])
+              sessionStorage.setItem('gender', profile['gender'])
+              sessionStorage.setItem('idCard', profile['idCard'])
+              sessionStorage.setItem('mail', profile['mail'])
+              sessionStorage.setItem('name', profile['name'])
+              sessionStorage.setItem('qqAccount', profile['qqAccount'])
+              sessionStorage.setItem('schoolCard', profile['schoolCard'])
+              sessionStorage.setItem('wechatAccount', profile['wechatAccount'])
+              sessionStorage.setItem('weiboAccount', profile['weiboAccount'])
+            } else {
+              sessionStorage.setItem('nickname', user['uid'])
+            }
             loginButton.innerHTML = '登陆'
             this.$emit('logInSucceed', null)
           } else {
@@ -70,7 +76,6 @@
         })
       },
       enterClick (event) {
-        console.log(event.keyCode)
         if (event.keyCode === 13) {
           this.logIn()
         }
