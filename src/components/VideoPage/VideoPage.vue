@@ -2,15 +2,16 @@
   <div class="video-page" v-show="showFlag">
     <div class="close" @click="hide">返回</div>
     <div class="player" v-if="link!==null">
-      <embed
-        height="415"
-        width="544"
-        quality="high"
-        allowfullscreen="true"
-        type="application/x-shockwave-flash"
-        :src="flashLink"
-        :flashvars="flashParam"
-        pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
+      <video :src="link"></video>
+      <!--<embed-->
+        <!--height="415"-->
+        <!--width="544"-->
+        <!--quality="high"-->
+        <!--allowfullscreen="true"-->
+        <!--type="application/x-shockwave-flash"-->
+        <!--:src="flashLink"-->
+        <!--:flashvars="flashParam"-->
+        <!--pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>-->
     </div>
   </div>
 </template>

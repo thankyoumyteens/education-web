@@ -14,3 +14,9 @@ export function getUrl () {
     'updateProfile': host + 'updateProfile'
   }
 }
+
+export function getHost () {
+  let host = 'http://localhost:9999/course/upload/' // 开发用
+  // let host = '/course/upload/' // 发布用
+  return host
+}

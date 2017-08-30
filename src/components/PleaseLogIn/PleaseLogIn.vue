@@ -131,10 +131,10 @@
         height 580px
     .dialog-wrapper
       display inline-block
-      width: 500px;
-      padding: 27px 45px 40px;
-      background: #fff;
-      border-radius: 4px;
+      width 500px
+      padding 27px 45px 40px
+      background #fff
+      border-radius 4px
       margin-top 5%
       .login-dialog
         padding 2em 1em

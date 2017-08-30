@@ -26,7 +26,8 @@
   import Vue from 'vue'
   import page from '@/components/VideoPage/VideoPage'
   import {
-    getUrl
+    getUrl,
+    getHost
   } from '@/util/url.js'
 
   export default {
@@ -65,8 +66,8 @@
             let item = data[i]
             let o = {}
             o['title'] = item['title']
-            o['img'] = item['img']
-            o['link'] = item['link']
+            o['img'] = getHost() + item['img']
+            o['link'] = getHost() + item['link']
             Vue.set(this.courseList, i, o)
           }
         })
