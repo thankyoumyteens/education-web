@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="loading" id="loadingData" v-if="courseList.length<=0">
-        加载中...
+        暂无数据
       </div>
     </div>
     <page ref="page" v-show="showPage" @closed="pageClosed"></page>

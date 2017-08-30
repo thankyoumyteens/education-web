@@ -161,6 +161,7 @@ export default {
         display inline-block
         vertical-align top
         .nav-bar-item
+          outline none
           display inline-block
           text-decoration none
           text-align center
