@@ -4,9 +4,18 @@
       <div class="category-list">
         <div class="category-item category-title">分类: </div>
         <div class="category-item" :class="{'selected':selected===-1}" @click="getCourses(-1)">全部</div>
-        <div class="category-item" :class="{'selected':selected===0}" @click="getCourses(0)">初级经济师</div>
-        <div class="category-item" :class="{'selected':selected===1}" @click="getCourses(1)">中级经济师</div>
-        <div class="category-item" :class="{'selected':selected===2}" @click="getCourses(2)">高级经济师</div>
+        <div class="category-item" :class="{'selected':selected===0}" @click="getCourses(0)">工商管理</div>
+        <div class="category-item" :class="{'selected':selected===1}" @click="getCourses(1)">农业</div>
+        <div class="category-item" :class="{'selected':selected===2}" @click="getCourses(2)">商业</div>
+        <div class="category-item" :class="{'selected':selected===3}" @click="getCourses(3)">财政税收</div>
+        <div class="category-item" :class="{'selected':selected===4}" @click="getCourses(4)">金融</div>
+        <div class="category-item" :class="{'selected':selected===5}" @click="getCourses(5)">保险</div>
+        <div class="category-item" :class="{'selected':selected===6}" @click="getCourses(6)">运输</div>
+        <div class="category-item" :class="{'selected':selected===7}" @click="getCourses(7)">人力资源管理</div>
+        <div class="category-item" :class="{'selected':selected===8}" @click="getCourses(8)">邮电</div>
+        <div class="category-item" :class="{'selected':selected===9}" @click="getCourses(9)">房地产</div>
+        <div class="category-item" :class="{'selected':selected===10}" @click="getCourses(10)">旅游</div>
+        <div class="category-item" :class="{'selected':selected===11}" @click="getCourses(11)">建筑</div>
       </div>
       <div class="course-list" v-if="courseList.length>0">
         <div class="course-item" @click="toVideo(item['link'])" v-for="item in courseList">
@@ -62,6 +71,7 @@
             let item = data[i]
             let o = {}
             o['title'] = item['title']
+            o['category'] = item['category']
             o['img'] = getHost() + item['img']
             o['link'] = getHost() + item['link']
             Vue.set(this.courseList, i, o)

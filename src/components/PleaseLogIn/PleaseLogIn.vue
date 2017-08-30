@@ -110,7 +110,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .please-login
     position fixed
-    top 3em
+    top 45px
     left 0
     right 0
     bottom 0

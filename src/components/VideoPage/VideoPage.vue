@@ -1,8 +1,8 @@
 <template>
   <div class="video-page" v-show="showFlag">
     <div class="close" @click="hide">返回</div>
-    <div class="player" v-if="link!==null">
-      <video :src="link"></video>
+    <div class="player" id="player" v-if="link!==null">
+      <video :src="link" controls>请升级浏览器</video>
       <!--<embed-->
         <!--height="415"-->
         <!--width="544"-->
@@ -36,6 +36,7 @@
         this.showFlag = true
       },
       hide () {
+        this.link = null
         this.$emit('closed', null)
         this.showFlag = false
       }
@@ -46,5 +47,8 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .video-page
     .player
+      width 800px
       clear both
+      video
+        width 100%
 </style>

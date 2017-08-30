@@ -1,9 +1,9 @@
 <template>
-  <div class="register" @keyup="enterClick($event)">
+  <div class="register" id="register" @keyup="enterClick($event)">
     <div class="login-bg">
       <img src="./loginBg.jpg"/>
     </div>
-    <div class="dialog-wrapper">
+    <div class="dialog-wrapper" id="dialogWrapperRegister">
       <div class="login-dialog">
         <div class="login-item form-group">
           <h3>会员注册</h3>
@@ -28,10 +28,17 @@
   } from '@/util/url.js'
 
   export default {
+    mounted () {
+      document.getElementById('userId').focus()
+      let register = document.getElementById('register')
+      let dialogWrapper = document.getElementById('dialogWrapperRegister')
+      let pHeight = register.offsetHeight
+      let cHeight = dialogWrapper.offsetHeight
+      let height = pHeight - cHeight
+      let marginTop = height / 2
+      dialogWrapper.style.marginTop = marginTop + 'px'
+    },
     methods: {
-      mounted () {
-        document.getElementById('userId').focus()
-      },
       register () {
         let regButton = document.getElementById('regButton')
         let userId = document.getElementById('userId')
@@ -68,10 +75,17 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .register
-    width 100%
+    position fixed
+    top 45px
+    left 0
+    right 0
+    bottom 0
+    z-index -1
+    background #478aff
     overflow-x hidden
     text-align center
     .login-bg
+      display none
       position fixed
       top 3em
       left 0
@@ -82,10 +96,12 @@
       img
         height 580px
     .dialog-wrapper
-      margin-top 150px
-      margin-left 300px
-      padding 10px
-      background rgba(255, 255, 255, 0.3)
+      display inline-block
+      width 500px
+      padding 27px 45px 40px
+      background #fff
+      border-radius 4px
+      margin-top 5%
       .login-dialog
         padding 2em 1em
         background #fff
