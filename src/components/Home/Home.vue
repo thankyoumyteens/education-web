@@ -66,7 +66,7 @@
       </div>
     </div>
     <div class="introduce bgc">
-      <h1>如何报考经济师?</h1>
+      <h1>报考经济师需要什么条件?</h1>
       <div class="card-wrapper">
         <div class="card">
           <div class="icon"><img src="./images/1.png" alt=""></div>
