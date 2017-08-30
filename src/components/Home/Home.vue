@@ -2,12 +2,42 @@
   <div class="home">
     <div class="wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}" @mouseover="stop" @mouseout="play">
       <div class="wrapper-content" :class="{wrapper_trans:isTrans}" :style="{width:originalData.img_width*(originalData.num+2)+'px',height:originalData.img_height+'px',left:-originalData.img_width+'px'}" ref="wrapperContent">
-        <img class="wrapper-content_img" alt="4" src="./images/4.jpg" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}"/>
-        <img class="wrapper-content_img" alt="1" src="./images/1.png" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}"/>
-        <img class="wrapper-content_img" alt="2" src="./images/2.png" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}"/>
-        <img class="wrapper-content_img" alt="3" src="./images/3.jpg" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}"/>
-        <img class="wrapper-content_img" alt="4" src="./images/4.jpg" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}"/>
-        <img class="wrapper-content_img" alt="1" src="./images/1.png" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}"/>
+        <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
+          <p class="img-text">
+            标语标语标语标语标语标语
+          </p>
+          <img class="wrapper-content_img" alt="4" src="./images/a4.png" />
+        </div>
+        <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
+          <p class="img-text">
+            标语标语标语标语标语标语
+          </p>
+          <img class="wrapper-content_img" alt="1" src="./images/a1.jpg"/>
+        </div>
+        <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
+          <p class="img-text">
+            标语标语标语标语标语标语
+          </p>
+          <img class="wrapper-content_img" alt="2" src="./images/a2.jpg"/>
+        </div>
+        <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
+          <p class="img-text">
+            标语标语标语标语标语标语
+          </p>
+          <img class="wrapper-content_img" alt="3" src="./images/a3.jpg"/>
+        </div>
+        <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
+          <p class="img-text">
+            标语标语标语标语标语标语
+          </p>
+          <img class="wrapper-content_img" alt="4" src="./images/a4.png"/>
+        </div>
+        <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
+          <p class="img-text">
+            标语标语标语标语标语标语
+          </p>
+          <img class="wrapper-content_img" alt="1" src="./images/a1.jpg"/>
+        </div>
       </div>
       <div class="wrapper-buttons" :style="{left:(originalData.img_width-100)/2+'px'}">
         <span :class="['wrapper-button',{'wrapper_on':index==1}]"  @click="turnTo(1)"></span>
@@ -185,10 +215,25 @@
         position absolute
         left 0
         z-index 1
-        .wrapper-content_img
+        .img-wrapper
           border none
           outline none
           float left
+          position relative
+          .img-text
+            color #fff
+            font-size 3em
+            display inline-block
+            width 50%
+            text-align center
+            position absolute
+            top 30%
+            right 0
+          .wrapper-content_img
+            width 100%
+            height 100%
+            border none
+            outline none
       .wrapper-buttons
         position absolute
         width 100px

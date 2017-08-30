@@ -1,26 +1,23 @@
 <template>
-  <div class="please-login" @keyup="enterClick($event)">
+  <div class="please-login" id="pleaseLogin" @keyup="enterClick($event)">
     <div class="login-bg">
       <img src="./loginBg.jpg"/>
     </div>
-    <div class="dialog-wrapper">
+    <div class="dialog-wrapper" id="dialogWrapper">
       <div class="login-dialog">
         <div class="login-item form-group">
           <h3>会员登陆</h3>
         </div>
         <div class="login-item form-group">
-          <!--<label for="userId">用户名</label>-->
           <input type="text" id="userId" placeholder="手机号" tabindex="1" class="form-control">
         </div>
         <div class="login-item form-group">
-          <!--<label for="password">密码</label>-->
           <input type="password" id="password" placeholder="密码" tabindex="2" class="form-control">
         </div>
         <div class="login-item form-group" v-show="1">
-          <!--<label for="password">密码</label>-->
           <input type="text" id="imageCode" placeholder="验证码" tabindex="3" class="form-control">
-          <img class="imageCode" :src="imageCodeUrl" alt="">
           <a class="changeImageCode" @click="changeImageCode" href="javascript:void(0)">看不清?换一张</a>
+          <img class="imageCode" :src="imageCodeUrl" alt="">
         </div>
         <div class="login-item">
           <button @click="logIn" id="loginButton" class="btn btn-primary" tabindex="4">登陆</button>
@@ -44,6 +41,13 @@
     mounted () {
       document.getElementById('userId').focus()
       this.imageCodeUrl = getUrl()['imageCode'] + '?val=' + (new Date().getTime())
+      let pleaseLogin = document.getElementById('pleaseLogin')
+      let dialogWrapper = document.getElementById('dialogWrapper')
+      let pHeight = pleaseLogin.offsetHeight
+      let cHeight = dialogWrapper.offsetHeight
+      let height = pHeight - cHeight
+      let marginTop = height / 2
+      dialogWrapper.style.marginTop = marginTop + 'px'
     },
     methods: {
       logIn () {
@@ -105,10 +109,17 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .please-login
-    width 100%
+    position fixed
+    top 3em
+    left 0
+    right 0
+    bottom 0
+    z-index -1
+    background #478aff
     overflow-x hidden
     text-align center
     .login-bg
+      display none
       position fixed
       top 3em
       left 0
@@ -119,19 +130,29 @@
       img
         height 580px
     .dialog-wrapper
-      margin-top 150px
-      margin-left 300px
-      padding 10px
-      background rgba(255, 255, 255, 0.3)
+      display inline-block
+      width: 500px;
+      padding: 27px 45px 40px;
+      background: #fff;
+      border-radius: 4px;
+      margin-top 5%
       .login-dialog
         padding 2em 1em
         background #fff
         border 1px solid #ccc
         .login-item
           margin 0.5em
+          text-align left
+          #imageCode
+            width 40%
+            display inline-block
           .imageCode
+            float right
+            width 30%
+            display inline-block
             height 30px
           .changeImageCode
+            float right
             height 30px
             line-height 30px
             cursor pointer
