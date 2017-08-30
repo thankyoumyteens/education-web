@@ -51,4 +51,10 @@
       clear both
       video
         width 100%
+      video::-webkit-media-controls-enclosure {
+        overflow:hidden;
+      }
+      video::-webkit-media-controls-panel {
+        width: calc(100% + 30px);
+      }
 </style>
