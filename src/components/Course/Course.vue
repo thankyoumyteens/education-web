@@ -14,7 +14,7 @@
           <div class="title">{{item['title']}}</div>
         </div>
       </div>
-      <div class="loading" v-if="courseList.length<=0">
+      <div class="loading" id="loadingData" v-if="courseList.length<=0">
         加载中...
       </div>
     </div>
@@ -56,12 +56,8 @@
       getCourses (category) {
         this.selected = category
         this.$http.get(getUrl()['course'] + '?category=' + category).then((res) => {
-          let data = res.body
-          if (data.length <= 0) {
-            this.$refs.loading.innerHTML = '暂无数据'
-            return
-          }
           this.courseList = []
+          let data = res.body
           for (let i = 0; i < data.length; i++) {
             let item = data[i]
             let o = {}
@@ -124,4 +120,10 @@
           margin-top 5px
           margin-bottom 5px
           font-weight bold
+    .loading
+      width 1120px
+      margin 0 auto
+      text-align center
+      padding-top 10%
+      font-size 1.5em
 </style>

@@ -59,7 +59,7 @@
       },
       enterClick (event) {
         if (event.keyCode === 13) {
-          this.logIn()
+          this.register()
         }
       }
     }

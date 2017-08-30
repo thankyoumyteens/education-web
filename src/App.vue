@@ -29,7 +29,6 @@
         <router-view
           :profile="user"
           @logInSucceed="logInSucceed"
-          @signUpSucceed="signUpSucceed"
         ></router-view>
       </keep-alive>
     </div>
@@ -66,12 +65,14 @@ export default {
   },
   computed: {
     'freeShow' () {
+      if (this.user === null) {
+        //
+      }
       if (!sessionStorage.getItem('accessLevel')) {
         return true
       } else if (parseInt(sessionStorage.getItem('accessLevel')) < 1) {
         return true
       } else {
-        console.log(sessionStorage.getItem('accessLevel'))
         return false
       }
     }
@@ -101,12 +102,6 @@ export default {
       }
       this.user = o
       router.push('/Home')
-    },
-    /**
-     * 注册
-     */
-    signUpSucceed () {
-      alert('reg')
     },
     /**
      * 登出
