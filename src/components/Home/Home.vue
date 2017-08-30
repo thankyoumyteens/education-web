@@ -4,37 +4,43 @@
       <div class="wrapper-content" :class="{wrapper_trans:isTrans}" :style="{width:originalData.img_width*(originalData.num+2)+'px',height:originalData.img_height+'px',left:-originalData.img_width+'px'}" ref="wrapperContent">
         <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
           <p class="img-text">
-            标语标语标语标语标语标语
+            <span class="img-text-title">标题标题标题标题标题</span>
+            <span class="img-text-content">内容内容内容内容内容内容内容内容内容内容</span>
           </p>
           <img class="wrapper-content_img" alt="4" src="./images/a4.png" />
         </div>
         <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
           <p class="img-text">
-            标语标语标语标语标语标语
+            <span class="img-text-title">标题标题标题标题标题</span>
+            <span class="img-text-content">内容内容内容内容内容内容内容内容内容内容</span>
           </p>
           <img class="wrapper-content_img" alt="1" src="./images/a1.jpg"/>
         </div>
         <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
           <p class="img-text">
-            标语标语标语标语标语标语
+            <span class="img-text-title">标题标题标题标题标题</span>
+            <span class="img-text-content">内容内容内容内容内容内容内容内容内容内容</span>
           </p>
           <img class="wrapper-content_img" alt="2" src="./images/a2.jpg"/>
         </div>
         <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
           <p class="img-text">
-            标语标语标语标语标语标语
+            <span class="img-text-title">标题标题标题标题标题</span>
+            <span class="img-text-content">内容内容内容内容内容内容内容内容内容内容</span>
           </p>
           <img class="wrapper-content_img" alt="3" src="./images/a3.jpg"/>
         </div>
         <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
           <p class="img-text">
-            标语标语标语标语标语标语
+            <span class="img-text-title">标题标题标题标题标题</span>
+            <span class="img-text-content">内容内容内容内容内容内容内容内容内容内容</span>
           </p>
           <img class="wrapper-content_img" alt="4" src="./images/a4.png"/>
         </div>
         <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
           <p class="img-text">
-            标语标语标语标语标语标语
+            <span class="img-text-title">标题标题标题标题标题</span>
+            <span class="img-text-content">内容内容内容内容内容内容内容内容内容内容</span>
           </p>
           <img class="wrapper-content_img" alt="1" src="./images/a1.jpg"/>
         </div>
@@ -222,13 +228,17 @@
           position relative
           .img-text
             color #fff
-            font-size 3em
             display inline-block
             width 50%
             text-align center
             position absolute
             top 30%
             right 0
+            .img-text-title
+              font-size 3em
+              display block
+            .img-text-content
+              font-size 2.5em
           .wrapper-content_img
             width 100%
             height 100%
