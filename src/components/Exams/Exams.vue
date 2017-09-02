@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="loading" v-if="examList.length<=0">
-      加载中...
+      暂无数据
     </div>
   </div>
 </template>
@@ -24,10 +24,6 @@
     mounted () {
       this.$http.get(getUrl()['exams']).then((res) => {
         let data = res.body
-        if (data.length <= 0) {
-          this.$refs.loading.innerHTML = '暂无数据'
-          return
-        }
         this.examList = []
         for (let i = 0; i < data.length; i++) {
           let item = data[i]
@@ -72,4 +68,10 @@
           height 50px
           line-height 50px
           vertical-align top
+    .loading
+      width 1120px
+      margin 0 auto
+      text-align center
+      padding-top 10%
+      font-size 1.5em
 </style>

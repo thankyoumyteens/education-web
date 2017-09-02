@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="loading" v-if="freeCourseList.length<=0">
-        加载中...
+        暂无数据
       </div>
     </div>
     <page ref="freePage" v-show="showPageFree" @closed="pageClosed"></page>
@@ -57,10 +57,6 @@
         this.selected = category
         this.$http.get(getUrl()['course'] + '?category=' + category).then((res) => {
           let data = res.body
-          if (data.length <= 0) {
-            this.$refs.loading.innerHTML = '暂无数据'
-            return
-          }
           this.freeCourseList = []
           for (let i = 0; i < data.length; i++) {
             let item = data[i]
@@ -124,4 +120,10 @@
           margin-top 5px
           margin-bottom 5px
           font-weight bold
+    .loading
+      width 1120px
+      margin 0 auto
+      text-align center
+      padding-top 10%
+      font-size 1.5em
 </style>

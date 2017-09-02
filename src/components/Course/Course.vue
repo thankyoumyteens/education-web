@@ -16,11 +16,18 @@
         <div class="category-item" :class="{'selected':selected===9}" @click="getCourses(9)">房地产</div>
         <div class="category-item" :class="{'selected':selected===10}" @click="getCourses(10)">旅游</div>
         <div class="category-item" :class="{'selected':selected===11}" @click="getCourses(11)">建筑</div>
+        <div class="category-item" :class="{'selected':selected===200}" @click="getCourses(200)">录音</div>
       </div>
       <div class="course-list" v-if="courseList.length>0">
-        <div class="course-item" @click="toVideo(item['link'])" v-for="item in courseList">
+        <div class="course-item" v-if="item['category']!=='200'" @click="toVideo(item['link'])" v-for="item in courseList">
           <div class="img"><img :src="item['img']" alt=""></div>
           <div class="title">{{item['title']}}</div>
+        </div>
+        <div class="course-item" v-if="item['category']==='200'" v-for="item in courseList" @mouseover="changeLink(item['link'])">
+          <div class="img"><img src="./audioBg.png" alt=""></div>
+          <div class="title">{{item['title']}}</div>
+          <div class="play" @click="playAudio()">播放</div>
+          <div class="pause" @click="pauseAudio()">暂停</div>
         </div>
       </div>
       <div class="loading" id="loadingData" v-if="courseList.length<=0">
@@ -28,6 +35,7 @@
       </div>
     </div>
     <page ref="page" v-show="showPage" @closed="pageClosed"></page>
+    <audio ref="audioPlayer" :src="audioLink"></audio>
   </div>
 </template>
 
@@ -48,12 +56,22 @@
     },
     data () {
       return {
+        audioLink: '',
         selected: -1,
         showPage: false,
         courseList: []
       }
     },
     methods: {
+      changeLink (link) {
+        this.audioLink = link
+      },
+      pauseAudio () {
+        this.$refs.audioPlayer.pause()
+      },
+      playAudio (link) {
+        this.$refs.audioPlayer.play()
+      },
       toVideo (link) {
         this.$refs.page.init(link)
         this.$refs.page.show()
@@ -130,6 +148,10 @@
           margin-top 5px
           margin-bottom 5px
           font-weight bold
+        .play, .pause
+          display inline-block
+          width 49%
+          text-align center
     .loading
       width 1120px
       margin 0 auto

@@ -11,8 +11,8 @@
         </div>
         <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
           <p class="img-text">
-            <span class="img-text-title">标题标题标题标题标题</span>
-            <span class="img-text-content">内容内容内容内容内容内容内容内容内容内容</span>
+            <span class="img-text-title">中级经济师资格考试</span>
+            <span class="img-text-content">十年教学经验, 为你提供最优质的方案</span>
           </p>
           <img class="wrapper-content_img" alt="1" src="./images/a1.jpg"/>
         </div>
@@ -39,8 +39,8 @@
         </div>
         <div class="img-wrapper" :style="{width:originalData.img_width+'px',height:originalData.img_height+'px'}">
           <p class="img-text">
-            <span class="img-text-title">标题标题标题标题标题</span>
-            <span class="img-text-content">内容内容内容内容内容内容内容内容内容内容</span>
+            <span class="img-text-title">中级经济师资格考试</span>
+            <span class="img-text-content">十年教学经验, 为你提供最优质的方案</span>
           </p>
           <img class="wrapper-content_img" alt="1" src="./images/a1.jpg"/>
         </div>

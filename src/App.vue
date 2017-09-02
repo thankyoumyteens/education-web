@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="nav-bar">
-      <div class="logo">
+      <div class="logo" v-show="0">
         <img src="./logo.png" alt="logo">
       </div>
       <div class="nav-item">
@@ -10,6 +10,7 @@
         <router-link class="nav-bar-item" to="/Course">课程</router-link>
         <router-link class="nav-bar-item" to="/Simulation">模拟题</router-link>
         <router-link class="nav-bar-item" to="/Exams">历年题</router-link>
+        <a class="nav-bar-item" href="http://www.hljrsks.org.cn/" target="_blank">考试相关</a>
         <router-link class="nav-bar-item" to="/Live">直播间</router-link>
         <router-link class="nav-bar-item" to="/About">关于我们</router-link>
       </div>
@@ -31,6 +32,13 @@
           @logInSucceed="logInSucceed"
         ></router-view>
       </keep-alive>
+    </div>
+    <div class="contact-us">
+      <h5>联系我们</h5>
+      <p><span class="contact-title">QQ:</span><span class="contact-text">87809755</span></p>
+      <p><span class="contact-title">哈尔滨班:</span><span class="contact-text">13966896609</span></p>
+      <p><span class="contact-title">大庆班:</span><span class="contact-text">13234923529</span></p>
+      <p><span class="contact-title">大庆班:</span><span class="contact-text">18145197365</span></p>
     </div>
     <div class="foot"></div>
   </div>
@@ -175,6 +183,32 @@ export default {
       margin-top 45px
       display inline-block
       text-align left
+    .contact-us
+      position fixed
+      height 12em
+      overflow hidden
+      right 10px
+      bottom -9em
+      border 1px solid #ccc
+      vertical-align top
+      box-shadow 6px 6px 2px #dfdbda
+      transition all .3s
+      padding 2px
+      background #337ab7
+      color #fff
+      &:hover
+        bottom 0
+      h5, p
+        display block
+      h5
+        font-size 1.3em
+        font-weight bold
+      .contact-title
+        text-align left
+        display inline-block
+        width 5em
+      .contact-text
+        text-align left
     .foot
       clear both
 </style>

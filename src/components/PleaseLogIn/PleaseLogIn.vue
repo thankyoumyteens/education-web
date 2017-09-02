@@ -9,12 +9,12 @@
           <h3>会员登陆</h3>
         </div>
         <div class="login-item form-group">
-          <input type="text" id="userId" placeholder="手机号" tabindex="1" class="form-control">
+          <input type="number" maxlength="11" minlength="11" id="userId" placeholder="手机号" tabindex="1" class="form-control">
         </div>
         <div class="login-item form-group">
           <input type="password" id="password" placeholder="密码" tabindex="2" class="form-control">
         </div>
-        <div class="login-item form-group" v-show="1">
+        <div class="login-item form-group" v-show="0">
           <input type="text" id="imageCode" placeholder="验证码" tabindex="3" class="form-control">
           <a class="changeImageCode" @click="changeImageCode" href="javascript:void(0)">看不清?换一张</a>
           <img class="imageCode" :src="imageCodeUrl" alt="">
