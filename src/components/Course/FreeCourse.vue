@@ -62,8 +62,8 @@
             let item = data[i]
             let o = {}
             o['title'] = item['title']
-            o['img'] = getHost() + item['img']
-            o['link'] = getHost() + item['link']
+            o['img'] = getHost() + '/upload/' + item['img']
+            o['link'] = getHost() + '/upload/' + item['link']
             Vue.set(this.freeCourseList, i, o)
           }
         })

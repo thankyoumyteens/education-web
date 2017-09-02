@@ -90,8 +90,8 @@
             let o = {}
             o['title'] = item['title']
             o['category'] = item['category']
-            o['img'] = getHost() + item['img']
-            o['link'] = getHost() + item['link']
+            o['img'] = getHost() + '/upload/' + item['img']
+            o['link'] = getHost() + '/upload/' + item['link']
             Vue.set(this.courseList, i, o)
           }
         })

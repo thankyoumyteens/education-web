@@ -17,7 +17,8 @@
 <script type="text/ecmascript-6">
   import Vue from 'vue'
   import {
-    getUrl
+    getUrl,
+    getHost
   } from '@/util/url.js'
 
   export default {
@@ -29,7 +30,7 @@
           let item = data[i]
           let o = {}
           o['title'] = item['title']
-          o['link'] = item['link']
+          o['link'] = getHost() + item['link']
           Vue.set(this.simulationList, i, o)
         }
       })
